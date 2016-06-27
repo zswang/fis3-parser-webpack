@@ -1,0 +1,10 @@
+{
+  "name": "fis-parser-webpack-example",
+  "private": true,
+  "devDependencies": {
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10"
+  },
+  "dependencies": {
+  }
+}
