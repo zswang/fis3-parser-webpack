@@ -4,8 +4,6 @@ node_js:
 script:
   - npm run lint
   - npm run test
-before_script:
-  - "npm install fis3 -g"
 after_script:
   - "npm install coveralls@2.10.0 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
 branches:
