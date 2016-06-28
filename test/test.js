@@ -28,7 +28,12 @@ describe('fixtures', function () {
           origin: input,
           filename: path.basename(input),
           dirname: testdir,
-          ext: path.basename(input)
+          ext: path.basename(input),
+          cache: {
+            addDeps: function (filename) {
+
+            }
+          }
         }, require(option))
       );
     });

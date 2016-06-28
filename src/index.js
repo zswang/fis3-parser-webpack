@@ -66,6 +66,8 @@ module.exports = function (content, file, conf) {
           fileSystem: mfs,
           path: originname
         };
+      } else {
+        file.cache.addDeps(filename); // 添加编译依赖
       }
     }, compiler.inputFileSystem);
 
