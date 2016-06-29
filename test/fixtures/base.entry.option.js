@@ -6,5 +6,9 @@ module.exports = {
     loaders: [
       { test: /\.ts$/, loader: 'ts-loader' }
     ]
+  },
+  babel: {
+    presets: ['es2015'],
+    plugins: ['transform-runtime']
   }
 };

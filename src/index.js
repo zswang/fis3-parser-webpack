@@ -56,6 +56,11 @@ module.exports = function (content, file, conf) {
       source: false,
       errorDetails: false
     };
+    Object.keys(conf).forEach(function (key) {
+      if (typeof options[key] === 'undefined') {
+        options[key] = conf[key];
+      }
+    });
     var compiler = webpack(options);
     var mfs = new MemoryFileSystem({});
     mfs.mkdirpSync(path.dirname(originname));

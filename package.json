@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/zswang/fis3-parser-webpack.git"
   },
-  "version": "0.0.3",
+  "version": "0.0.5",
   "main": "lib/index.js",
   "license": "MIT",
   "bugs": {
