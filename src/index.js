@@ -33,34 +33,47 @@ module.exports = function (content, file, conf) {
   var compress = deasync(function (content, callback) {
     var outputFileName = '/output.out';
     var originname = path.resolve(file.origin);
+
+    if (typeof conf.getOptions === 'function') {
+      conf = conf.getOptions(webpack);
+    }
+
     var options = {
       entry: originname,
       output: {
-        filename: outputFileName,
+        path: '/',
+        filename: outputFileName.substring(1),
       },
-      path: file.dirname,
-      resolve: conf.resolve,
-      plugins: conf.plugins,
+      // path: file.dirname,  // unknown property
       module: conf.module,
-
-      hash: false,
-      timings: false,
-      chunks: false,
-      chunkModules: false,
-      modules: false,
-      children: true,
-      version: true,
-      cached: false,
-      cachedAssets: false,
-      reasons: false,
-      source: false,
-      errorDetails: false
+      resolve: conf.resolve,
+      performance: conf.performance,
+      module: conf.module,
+      target: conf.target,
+      externals: conf.externals,
+      plugins: conf.plugins,
+      
+      // hash: false, // unknown property
+      // timings: false, // unknown property
+      // chunks: false, // unknown property
+      // chunkModules: false, // unknown property
+      // modules: false, // unknown property
+      // children: true, // unknown property
+      // version: true, // unknown property
+      // cached: false, // unknown property
+      // cachedAssets: false, // unknown property
+      // reasons: false, // unknown property
+      // source: false, // unknown property
+      // errorDetails: false // unknown property
     };
-    Object.keys(conf).forEach(function (key) {
-      if (typeof options[key] === 'undefined') {
-        options[key] = conf[key];
-      }
-    });
+    
+    // 新版本不识别的字段会报错，所以不能自由添加了。
+    // Object.keys(conf).forEach(function (key) {
+    //   if (typeof options[key] === 'undefined') {
+    //     options[key] = conf[key];
+    //   }
+    // });
+    
     var compiler = webpack(options);
     var mfs = new MemoryFileSystem({});
     mfs.mkdirpSync(path.dirname(originname));

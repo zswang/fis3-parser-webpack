@@ -5,6 +5,49 @@ A parser for fis to compile webpack module.
 
 # [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Coverage Status][coverage-image]][coverage-url]
 
+## 使用示例
+
+```js
+fis.match('xx.js', {
+    parser: fis.plugin('webpack', {
+        module: {
+            rules: [{
+                test: /\.css$/,
+                use: [ 'style-loader', 'css-loader' ]
+            }]
+        },
+        // ...options
+        // 请参考 https://webpack.js.org/configuration/#options
+    })
+})
+```
+
+或者
+
+```js
+fis.match('xx.js', {
+    parser: fis.plugin('webpack', {
+        getOptions: function(webpack) {
+            return {
+                module: {
+                    rules: [{
+                        test: /\.css$/,
+                        use: [ 'style-loader', 'css-loader' ]
+                    }]
+                },
+                plugins: [
+                    // Ignore require() calls in vs/language/typescript/lib/typescriptServices.js
+                    new webpack.IgnorePlugin(
+                        /^((fs)|(path)|(os)|(crypto)|(source-map-support))$/,
+                        /vs\/language\/typescript\/lib/
+                    )
+                ]
+            }
+        }
+    })
+})
+```
+
 ## License
 
 MIT © [zswang](http://weibo.com/zswang)

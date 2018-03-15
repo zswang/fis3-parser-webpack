@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/zswang/fis3-parser-webpack.git"
   },
-  "version": "0.0.5",
+  "version": "0.1.0",
   "main": "lib/index.js",
   "license": "MIT",
   "bugs": {
@@ -17,7 +17,7 @@
     "url": "http://weibo.com/zswang"
   },
   "dependencies": {
-    "webpack": "^1.13.1",
+    "webpack": "^3.4.1",
     "memory-fs": "^0.3.0",
     "proxy-fs": "^0.0.10",
     "deasync": "^0.1.3"
